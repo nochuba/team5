@@ -1,0 +1,111 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>{% block title %}The Little Things {% endblock %}</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+  <link href="{% static "css/base.css" %}" rel="stylesheet">
+<script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</head>
+
+
+<body>
+  <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Logo and responsive toggle -->
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">The Little Things</a>
+            </div>
+            <!-- Navbar links -->
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="{% url "shop:about" %}">About Us</a></li>
+                    <li><a href="{% url "shop:product_list" %}">Menu</a></li>
+                    <li><a href="{% url "shop:contact" %}">Contact Us</a></li>
+                    <li class="dropdown">
+                      <a class="dropdown-toggle" data-toggle="dropdown" href="#">Categories
+                        <span class="caret"></span></a>
+                           <ul class="dropdown-menu">
+                               {% for c in categories %}
+                                <li {% if category.slug == c.slug %}class="selected"{% endif %}>
+                                  <a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+                                </li>
+                              {% endfor %}
+                             {% comment %} <li><a href="#">Salads</a></li>
+                              <li><a href="#">Sandwiches</a></li>
+                              <li><a href="#">Soups</a></li>{% endcomment %}
+                           </ul>
+                    </li>
+                </ul>
+
+
+				<ul class="nav navbar-right navbar-nav">
+                    <li><!-- Search -->
+				        <form class="navbar-form" role="search">
+					        <div class="form-group">
+						        <input type="text" class="form-control">
+					        </div>
+					    <button type="submit" class="btn btn-default">Search</button>
+				        </form>
+                    </li>
+                    <li>
+                       <div class="cart ">
+                            {% with total_items=cart|length %}
+                                {% if cart|length > 0 %}
+                                    Your cart:
+                                    <a href="{% url "cart:cart_detail" %}">
+                                    {{ total_items }} item{{ total_items|pluralize }},
+                                    ${{ cart.get_total_price }}
+                                    </a>
+                                {% else %}
+                                    Your cart is empty.
+                                {% endif %}
+
+                            {% endwith %}
+                        </div>
+                    </li>
+                </ul>
+
+
+
+
+            </div>
+
+            <!-- /.navbar-collapse -->
+
+        </div>
+        <!-- /.container -->
+    </nav>
+
+	<div class="jumbotron feature">
+		<div class="container">
+
+			<h1><span class="glyphicon glyphicon-equalizer"></span> Enjoy the little things</h1>
+			<p>Share the little love...</p>
+
+		</div>
+	</div>
+
+    <!-- Content -->
+    <div class="container">
+
+  </div>
+  <div id="content">
+    {% block content %}
+    {% endblock %}
+  </div>
+</body>
+
+
+<footer>
+
+</footer>
+
+</html>

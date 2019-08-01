@@ -1,0 +1,54 @@
+
+<div class="nav">
+    {% extends "shop/base.html" %}
+</div>
+{% load static %}
+<!DOCTYPE html>
+<html>
+{% block content %}
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body, html {
+    height: 100%;
+}
+h1, h2, h3, h4 {
+    font-family: 'Lobster', cursive;
+}
+.parallax {
+    /* The image used */
+    /* Full height */
+    height: 100%;
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+/* Turn off parallax scrolling for tablets and phones. Increase the pixels if needed */
+@media only screen and (max-device-width: 1366px) {
+    .parallax {
+        background-attachment: scroll;
+    }
+}
+</style>
+</head>
+<body>
+
+<h1><p align="center">Feel free to get in touch with us!!</p></h1>
+
+
+
+<h2><p align="center">Give us a call +1 713 8945567 </p></h2>
+<h2><p align="center">or</p></h2>
+<h2><p align="center">Shoot us a mail to little@gmail.com </p></h2>
+<form action="/submit">
+    Email:
+    <input type="text" name="Name">
+    <input type="submit" value="Send">
+</form>
+<div class="parallax"></div>
+
+</body>
+{% endblock %}
+</html>

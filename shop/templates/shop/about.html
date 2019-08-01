@@ -1,0 +1,47 @@
+
+<div class="nav">
+    {% extends "shop/base.html" %}
+</div>
+{% load static %}
+<!DOCTYPE html>
+<html>
+{% block content %}
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body, html {
+    height: 100%;
+}
+h1, h2, h3, h4 {
+    font-family: 'Lobster', cursive;
+}
+.parallax {
+    /* The image used */
+    /* Full height */
+    height: 100%;
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+/* Turn off parallax scrolling for tablets and phones. Increase the pixels if needed */
+@media only screen and (max-device-width: 1366px) {
+    .parallax {
+        background-attachment: scroll;
+    }
+}
+</style>
+</head>
+<body>
+
+<h1><p align="center">The Little Things is an online food delivery service opened in 2005. At The Little Things.com, our focus is providing delicious meals at reasonable prices.
+    Our menu offers an impressive array of foods including sandwiches, soups, salads, and healthy desserts. Our ordering process is simple to use, and satisfaction is guaranteed with every order delivery. Stop by our site
+    today to experience exceptional cuisine!</p></h1>
+
+
+
+
+</body>
+{% endblock %}
+</html>
